@@ -1,9 +1,9 @@
 resource "aws_vpc" "tg_test" {
-  cidr_block              = var.cidr
+  cidr_block              = local.cidr
   enable_dns_hostnames    = true
 
   tags = {
-    Name                  = var.vpc-name
+    Name                  = local.name
   }
 }
 
@@ -11,7 +11,7 @@ resource "aws_internet_gateway" "tg_gw" {
   vpc_id                  = aws_vpc.tg_test.id
 
   tags = {
-    Name                  = "${var.vpc-name}-gw"
+    Name                  = "${local.vpc-name}-gw"
   }
 }
 
